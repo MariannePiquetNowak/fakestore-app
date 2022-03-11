@@ -7,6 +7,9 @@ function Banner() {
   const dispatch = useDispatch();
   const { mode } = useSelector((state) => state.interface);
 
+  // On lit les propriétés firstname et lastname du state de userReducer
+  const { firstname, lastname } = useSelector((state) => state.user);
+
   const changeMode = () => {
     dispatch(setTheme(mode === 'dark' ? 'light' : 'dark'));
   };
@@ -19,7 +22,10 @@ function Banner() {
 
       <div style={{ display: 'flex' }}>
         <div style={styles.menuItem}>
-          👱‍♂️ <Link to="/profile">John Doe</Link>
+          👱‍♂️{' '}
+          <Link to="/profile">
+            {firstname} {lastname}
+          </Link>
         </div>
         <div style={styles.menuItem}>
           🛒{' '}

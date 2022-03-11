@@ -8,8 +8,12 @@ import Profile from './views/Profile';
 
 function App() {
   const { mode } = useSelector((state) => state.interface);
+  // const { basket } = useSelector((state) => state.basket);
+  const { infos } = useSelector((state) => state.user);
 
   console.log('store: ', mode);
+  // console.log('panier: ', basket);
+  console.log('user: ', infos);
 
   return (
     <BrowserRouter>
