@@ -5,11 +5,7 @@ import { useProducts } from '../services/Products';
 function Home() {
   const products = useProducts();
 
-  return (
-    <div>
-      <ProductsList products={products} />
-    </div>
-  );
+  return <div>{products && <ProductsList products={products} />}</div>;
 }
 
 export default Home;

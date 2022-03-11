@@ -1,7 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setTheme } from '../actions/actions-types';
 
 function Banner() {
+  const dispatch = useDispatch();
+  const { mode } = useSelector((state) => state.interface);
+
+  const changeMode = () => {
+    dispatch(setTheme(mode === 'dark' ? 'light' : 'dark'));
+  };
+
   return (
     <header>
       <h1 style={styles.mainTitle}>
@@ -19,7 +28,10 @@ function Banner() {
           </Link>
         </div>
         <div style={styles.menuItem}>
-          🌓 <Link to="#">Dark Mode</Link>
+          {mode === 'dark' ? '🌕' : '🌑'}{' '}
+          <Link to="#" onClick={changeMode}>
+            {mode === 'dark' ? 'Light Mode' : 'Dark Mode'}
+          </Link>
         </div>
       </div>
     </header>
